@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+// style
 import logo from './logo.svg';
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
+// components
 import TodoList from './TodoList';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>My TODOs</h2>
         </div>
-        <p className="App-intro">
+        <p className="container">
           <TodoList />
         </p>
       </div>
