@@ -5,17 +5,27 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 // components
 import TodoList from './TodoList';
+import NewItem from './NewItem';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h2>My TODOs</h2>
         </div>
-        <p className="container">
-          <TodoList />
+        <p className="App-body">
+          <NewItem />
+
+          <div className='list'>
+            <h4>In Progress</h4>
+            <TodoList type='incomplete' />
+          </div>
+
+          <div className='list'>
+            <h4>Completed</h4>
+            <TodoList type='completed' />
+          </div>
         </p>
       </div>
     );
