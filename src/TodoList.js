@@ -6,17 +6,19 @@ import TodoItem from './TodoItem';
 
 class TodoList extends Component {
   render() {
+    const completed = this.props.completed;
+    const data = this.props.items;
+    const items = data.map((item) => {
+      return(
+        <li>
+          <TodoItem id={item.index} text={item.text} completed={item.done} />
+        </li>
+      );
+    });
+
     return (
       <ul className="todo-list">
-        <li>
-          <TodoItem text="Book Venue" completed="false" />
-        </li>
-        <li>
-          <TodoItem text="Order Cake" completed="false" />
-        </li>
-        <li>
-          <TodoItem text="Invite Guests" completed="true" />
-        </li>
+        {items}
       </ul>
     );
   }

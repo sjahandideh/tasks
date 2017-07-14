@@ -5,11 +5,11 @@ import './NewItem.css';
 class NewItem extends Component {
   render() {
     return (
-      <div className="new-item">
+      <div className='new-item'>
         <input
-          type="text"
-          placeholder="New task ..."
-          aria-describedby="basic-addon1"
+          type='text'
+          placeholder='New task ...'
+          aria-describedby='basic-addon1'
         />
       </div>
     );
