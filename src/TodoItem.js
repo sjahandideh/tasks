@@ -4,15 +4,24 @@ import './TodoItem.css';
 
 class TodoItem extends Component {
   render() {
-    let divClass = this.props.completed ? 'completed' : '';
-    let btnClass = this.props.completed ? '' : 'in-progress';
+    let isDone = this.props.completed;
+    let taskText = this.props.text;
 
-    return (
-      <div className={divClass + ' todo-item'}>
-        <button type='button' className={btnClass + ' btn btn-success'}>
+    let checkBtn, divClass;
+    if (!isDone) {
+      checkBtn = (
+        <button type="button" className=" btn btn-success in-progress">
           ✔
         </button>
-        {this.props.text}
+      );
+    } else {
+      divClass = 'completed';
+    }
+
+    return (
+      <div className={ divClass + ' todo-item' }>
+        {checkBtn}
+        {taskText}
       </div>
     );
   }
