@@ -39,7 +39,8 @@ const mapStateToProps = (state, ownProps) => {
 
 // Map actions to props
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

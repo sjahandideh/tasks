@@ -33,14 +33,6 @@ class NewItem extends Component {
   }
 }
 
-// Maps state from store to props
-const mapStateToProps = (state, ownProps) => {
-  return {
-    // You can now say this.props.books
-    tasks: state.tasks
-  }
-};
-
 // Map actions to props
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -48,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewItem);
+export default connect(null, mapDispatchToProps)(NewItem);

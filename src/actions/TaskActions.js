@@ -6,3 +6,10 @@ export const createTask = (task) => {
     task: task
   }
 };
+
+export const completeTask = (task) => {
+  return {
+    type: 'COMPLETE_TASK',
+    task: task
+  }
+};
