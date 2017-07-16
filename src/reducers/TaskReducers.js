@@ -1,7 +1,7 @@
 // TaskReducers.js
 
+// state == array of tasks
 export default (state = [], action) => {
-
   switch (action.type) {
     case 'CREATE_TASK':
       return [
@@ -9,10 +9,14 @@ export default (state = [], action) => {
         Object.assign({}, action.task)
       ];
     case 'COMPLETE_TASK':
-      // get action.task and make it completed and return the whole state
-      return state;
+      let tasks = [...state];
+      tasks.forEach(task => {
+        if (task.text == action.task) {
+          task.completed = true;
+        }
+      });
+      return tasks;
     default:
       return state;
   }
-
 };

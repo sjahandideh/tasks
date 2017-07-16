@@ -11,6 +11,10 @@ class TodoList extends Component {
     super(props);
   }
 
+  handleTaskClick(task) {
+    this.props.completeTask(task);
+  }
+
   render() {
     let tasks;
 
@@ -23,7 +27,11 @@ class TodoList extends Component {
     const items = tasks.map(item => {
       return (
         <li>
-          <TodoItem text={item.text} completed={item.completed} />
+          <TodoItem
+            text={item.text}
+            completed={item.completed}
+            onClick={task => this.handleTaskClick(task)}
+          />
         </li>
       );
     });
@@ -46,13 +54,15 @@ const filterTasks = (tasks, completedFilter) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     completed: filterTasks(state.tasks, true),
-    inProgress: filterTasks(state.tasks, false),
+    inProgress: filterTasks(state.tasks, false)
   };
 };
 
 // Map actions to props
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    completeTask: taskId => dispatch(TaskActions.completeTask(taskId))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
