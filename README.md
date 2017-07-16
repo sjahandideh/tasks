@@ -12,6 +12,8 @@
 4. combine reducers
 5. configure stores
 6. provide store (wrap app into react-redux provider)
+7. connect to store
+8. run with (npm start -s)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
