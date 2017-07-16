@@ -31,12 +31,12 @@ class App extends Component {
 
           <div className='list'>
             <h4>Doing ...</h4>
-            <TodoList items={this.fakeList().inProgress} />
+            <TodoList type='in-progress' />
           </div>
 
           <div className='list'>
             <h4>Done!</h4>
-            <TodoList items={this.fakeList().completed} />
+            <TodoList type='completed'  />
           </div>
         </p>
       </div>

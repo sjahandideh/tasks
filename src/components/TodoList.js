@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux';
 import * as TaskActions from '../actions/TaskActions';
 // style
 import '../assets/styles/TodoList.css';
@@ -12,9 +12,16 @@ class TodoList extends Component {
   }
 
   render() {
-    const completed = this.props.completed;
-    const items = this.props.tasks.map((item) => {
-      return(
+    let tasks;
+
+    if (this.props.type === 'in-progress') {
+      tasks = this.props.inProgress;
+    } else {
+      tasks = this.props.completed;
+    }
+
+    const items = tasks.map(item => {
+      return (
         <li>
           <TodoItem text={item.text} completed={item.completed} />
         </li>
@@ -29,18 +36,23 @@ class TodoList extends Component {
   }
 }
 
+const filterTasks = (tasks, completedFilter) => {
+  return tasks.filter(task => {
+    return task.completed == completedFilter;
+  });
+};
+
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    // You can now say this.props.books
-    tasks: state.tasks
-  }
+    completed: filterTasks(state.tasks, true),
+    inProgress: filterTasks(state.tasks, false),
+  };
 };
 
 // Map actions to props
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
+const mapDispatchToProps = dispatch => {
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

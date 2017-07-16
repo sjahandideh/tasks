@@ -8,6 +8,9 @@ export default (state = [], action) => {
         ...state,
         Object.assign({}, action.task)
       ];
+    case 'COMPLETE_TASK':
+      // get action.task and make it completed and return the whole state
+      return state;
     default:
       return state;
   }
