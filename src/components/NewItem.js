@@ -1,35 +1,32 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import { createStore } from 'redux';
+import * as TaskActions from '../actions/TaskActions';
 // style
 import '../assets/styles/NewItem.css';
-// config
-import * as TaskActions from '../actions/TaskActions';
 
 class NewItem extends Component {
   constructor(props) {
     super(props);
   }
 
-  add(e, text) {
+  create(e) {
     if (e.keyCode == 13) {
       this.props.createTask({
-        text: text,
+        text: e.target.value,
         completed: false
       });
+
+      e.target.value = '';
     }
   }
 
   render() {
-    let taskInput;
-
     return (
       <div className="new-item">
         <input
           type="text"
           placeholder="New task"
-          onKeyDown={e => this.add(e, taskInput.value)}
-          ref={node => taskInput = node}
+          onKeyDown={e => this.create(e)}
         />
       </div>
     );
