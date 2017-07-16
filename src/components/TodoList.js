@@ -5,10 +5,16 @@ import '../assets/styles/TodoList.css';
 import TodoItem from './TodoItem';
 
 class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: this.props.items
+    }
+  }
+
   render() {
     const completed = this.props.completed;
-    const data = this.props.items;
-    const items = data.map((item) => {
+    const items = this.state.items.map((item) => {
       return(
         <li>
           <TodoItem id={item.index} text={item.text} completed={item.done} />
