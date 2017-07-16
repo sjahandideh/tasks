@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // style
-import './NewItem.css';
+import '../assets/styles/NewItem.css';
 
 class NewItem extends Component {
   render() {

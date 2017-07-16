@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // style
-import './TodoList.css';
+import '../assets/styles/TodoList.css';
 // component
 import TodoItem from './TodoItem';
 

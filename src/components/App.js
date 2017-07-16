@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // style
-import logo from './logo.svg';
-import './App.css';
+import logo from '../assets/img/logo.svg';
+import '../assets/styles/App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 // components
 import TodoList from './TodoList';

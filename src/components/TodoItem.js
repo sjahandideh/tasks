@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // style
-import './TodoItem.css';
+import '../assets/styles/TodoItem.css';
 
 class TodoItem extends Component {
   render() {
