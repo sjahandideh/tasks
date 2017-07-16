@@ -10,6 +10,8 @@
 2. create action
 3. create reducer
 4. combine reducers
+5. configure stores
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
