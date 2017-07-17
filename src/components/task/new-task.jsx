@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import * as TaskActions from '../actions/TaskActions';
+import * as TaskActions from '../../actions/TaskActions';
 // style
-import '../assets/styles/NewItem.css';
+import '../../assets/styles/new-task.css';
 
-class NewItem extends Component {
+class NewTask extends Component {
   constructor(props) {
     super(props);
   }
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(NewItem);
+export default connect(null, mapDispatchToProps)(NewTask);

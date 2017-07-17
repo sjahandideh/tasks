@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as TaskActions from '../actions/TaskActions';
+import * as TaskActions from '../../actions/TaskActions';
 // style
-import '../assets/styles/TodoList.css';
+import '../../assets/styles/task-list.css';
 // component
-import TodoItem from './TodoItem';
+import Task from './task';
 
-class TodoList extends Component {
+class TaskList extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +27,7 @@ class TodoList extends Component {
     const items = tasks.map(item => {
       return (
         <li>
-          <TodoItem
+          <Task
             text={item.text}
             completed={item.completed}
             onClick={task => this.handleTaskClick(task)}
@@ -65,4 +65,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

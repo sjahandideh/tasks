@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // style
 import logo from '../assets/img/logo.svg';
-import '../assets/styles/App.css';
+import '../assets/styles/home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 // components
-import TodoList from './TodoList';
-import NewItem from './NewItem';
+import TaskList from './task/task-list';
+import NewTask from './task/new-task';
 
-class App extends Component {
+class Home extends Component {
   fakeList() {
     return {
       completed: [
@@ -27,16 +27,16 @@ class App extends Component {
           <h2>My TODOs</h2>
         </div>
         <p className="App-body">
-          <NewItem />
+          <NewTask />
 
           <div className='list'>
             <h4>Doing ...</h4>
-            <TodoList type='in-progress' />
+            <TaskList type='in-progress' />
           </div>
 
           <div className='list'>
             <h4>Done!</h4>
-            <TodoList type='completed'  />
+            <TaskList type='completed'  />
           </div>
         </p>
       </div>
@@ -44,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

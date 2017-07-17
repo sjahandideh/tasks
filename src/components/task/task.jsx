@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 // style
-import '../assets/styles/TodoItem.css';
+import '../../assets/styles/task.css';
 
-class TodoItem extends Component {
+class Task extends Component {
   markAsDone(e) {
   }
 
@@ -30,4 +30,4 @@ class TodoItem extends Component {
   }
 }
 
-export default TodoItem;
+export default Task;
