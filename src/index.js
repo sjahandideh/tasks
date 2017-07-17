@@ -1,27 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from 'react-router-dom';
 
 // style
 import './assets/styles/index.css';
 // component
-import Home from './components/home';
-import NewTask from './components/task/new-task';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
+import AppRoute from './routes/route-maker';
+import routes from './routes/routes';
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <div>
-        <Route exact path="/" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/new" component={NewTask} />
+        {routes.map((route, i) => (
+          <AppRoute key={i} {...route}/>
+        ))}
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
