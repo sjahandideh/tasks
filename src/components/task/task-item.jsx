@@ -3,9 +3,6 @@ import React, {Component} from 'react';
 import '../../assets/styles/task-item.css';
 
 class TaskItem extends Component {
-  markAsDone(e) {
-  }
-
   render() {
     let isDone = this.props.tags.includes('completed');
     let taskText = this.props.text;
@@ -13,7 +10,10 @@ class TaskItem extends Component {
     let checkBtn, divClass;
     if (!isDone) {
       checkBtn = (
-        <button type="button" className=" btn btn-success in-progress" onClick={e => this.props.onClick(taskText)}>
+        <button
+          type='button'
+          className='btn btn-success in-progress'
+          onClick={e => this.props.onClick(taskText)}>
           ✔
         </button>
       );
@@ -22,7 +22,7 @@ class TaskItem extends Component {
     }
 
     return (
-      <div className={ divClass + ' todo-item' }>
+      <div className={divClass + ' todo-item'}>
         {checkBtn}
         {taskText}
       </div>
