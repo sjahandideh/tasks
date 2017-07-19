@@ -15,6 +15,10 @@
 7. connect to store
 8. run with (npm start -s)
 
+# Setup async Redux
+
+1. configure store with react-thrunk
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
