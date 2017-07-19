@@ -12,7 +12,8 @@ export default (state = [], action) => {
       let tasks = [...state];
       tasks.forEach(task => {
         if (task.text == action.task) {
-          task.completed = true;
+          task.tags.pop('in-progress')
+          task.tags.push('completed')
         }
       });
       return tasks;

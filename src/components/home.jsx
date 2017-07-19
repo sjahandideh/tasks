@@ -8,35 +8,25 @@ import TaskList from './task/task-list';
 import NewTask from './task/new-task';
 
 class Home extends Component {
-  fakeList() {
-    return {
-      completed: [
-        { index: 2, text: 'invite guests', done: true }
-      ],
-      inProgress: [
-        { index: 1, text: 'book venue',    done: false },
-        { index: 3, text: 'order cake',    done: false }
-      ]
-    };
-  }
-
   render() {
+    let category = this.props.match.params.category;
+
     return (
       <div className="App">
         <div className="App-header">
           <h2>My TODOs</h2>
         </div>
         <p className="App-body">
-          <NewTask />
+          <NewTask tag={category} />
 
           <div className='list'>
             <h4>Doing ...</h4>
-            <TaskList type='in-progress' />
+            <TaskList tags={'in-progress,'+category} />
           </div>
 
           <div className='list'>
             <h4>Done!</h4>
-            <TaskList type='completed'  />
+            <TaskList tags={'completed,'+category}  />
           </div>
         </p>
       </div>

@@ -10,10 +10,17 @@ class NewTask extends Component {
   }
 
   create(e) {
+    let category = this.props.tag;
+
     if (e.keyCode == 13) {
+      let tags = [
+        category,
+        'in-progress'
+      ]
+
       this.props.createTask({
         text: e.target.value,
-        completed: false
+        tags: tags
       });
 
       e.target.value = '';

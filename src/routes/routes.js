@@ -10,14 +10,14 @@ const routes = [
     public: true,
   },
   {
-    path: '/home',
+    path: '/:category',
     component: Home,
     public: true,
   },
   {
-    path: '/new',
+    path: '/:category/new',
     component: NewTask
-  },
+  }
 ];
 
 export default routes;

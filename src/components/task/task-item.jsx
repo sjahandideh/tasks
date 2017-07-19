@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 // style
-import '../../assets/styles/task.css';
+import '../../assets/styles/task-item.css';
 
-class Task extends Component {
+class TaskItem extends Component {
   markAsDone(e) {
   }
 
   render() {
-    let isDone = this.props.completed;
+    let isDone = this.props.tags.includes('completed');
     let taskText = this.props.text;
 
     let checkBtn, divClass;
@@ -30,4 +30,4 @@ class Task extends Component {
   }
 }
 
-export default Task;
+export default TaskItem;

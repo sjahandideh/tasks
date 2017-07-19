@@ -4,7 +4,7 @@ import * as TaskActions from '../../actions/TaskActions';
 // style
 import '../../assets/styles/task-list.css';
 // component
-import Task from './task';
+import TaskItem from './task-item';
 
 class TaskList extends Component {
   constructor(props) {
@@ -15,21 +15,30 @@ class TaskList extends Component {
     this.props.completeTask(task);
   }
 
-  render() {
-    let tasks;
+  match(task, tags) {
+    return task.tags.every(task => {
+      return tags.includes(task);
+    });
+  }
 
-    if (this.props.type === 'in-progress') {
-      tasks = this.props.inProgress;
-    } else {
-      tasks = this.props.completed;
-    }
+  // tasks is an Array of tasks
+  // filters is an Array of filters. e.g. ['completed', 'home']
+  filterTasks(tasks, tags) {
+    return tasks.filter(task => 
+      this.match(task, tags)
+    );
+  }
+
+  render() {
+    let tags = this.props.tags.split(',');
+    let tasks = this.filterTasks(this.props.tasks, tags);
 
     const items = tasks.map(item => {
       return (
         <li>
-          <Task
+          <TaskItem
             text={item.text}
-            completed={item.completed}
+            tags={item.tags}
             onClick={task => this.handleTaskClick(task)}
           />
         </li>
@@ -44,24 +53,17 @@ class TaskList extends Component {
   }
 }
 
-const filterTasks = (tasks, completedFilter) => {
-  return tasks.filter(task => {
-    return task.completed == completedFilter;
-  });
-};
-
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    completed: filterTasks(state.tasks, true),
-    inProgress: filterTasks(state.tasks, false)
+    tasks: state.tasks,
   };
 };
 
 // Map actions to props
 const mapDispatchToProps = dispatch => {
   return {
-    completeTask: taskId => dispatch(TaskActions.completeTask(taskId))
+    completeTask: taskId => dispatch(TaskActions.completeTask(taskId)),
   };
 };
 
