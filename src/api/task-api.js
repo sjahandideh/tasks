@@ -20,6 +20,17 @@ class TaskApi {
         return error;
       });
   }
+
+  static updateAll(tasks) {
+    return instance.post('/tasks', {tasks: tasks}).
+      then(function(response) {
+        let tasks = response.data.data.tasks;
+        return tasks;
+      })
+      .catch(function(error) {
+        return error;
+      });
+  }
 }
 
 export default TaskApi; 

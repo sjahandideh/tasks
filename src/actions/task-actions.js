@@ -27,6 +27,8 @@ export const completeTask = task => {
  *    doFailure: dispatches failure action with error message (back to UI components) - type == DO_FAILURE
  */
 
+/** load tasks **/
+
 export const loadTasksAsync = () => {
   return function(dispatch) {
     return TaskApi.getAll()
@@ -49,6 +51,34 @@ export const loadTasksSuccess = (tasks) => {
 export const loadTasksFailure = (error) => {
   return {
     type: types.LOAD_TASKS_FAILURE,
+    error: error
+  };
+}
+
+/** update tasks **/
+
+export const updateTasksAsync = (tasks) => {
+  return function(dispatch) {
+    return TaskApi.updateAll(tasks)
+      .then((tasks) => {
+        dispatch(updateTasksSuccess(tasks));
+      })
+      .catch((error) => {
+        dispatch(updateTasksFailure(error));
+      })
+  };
+};
+
+export const updateTasksSuccess = (tasks) => {
+  return {
+    type: types.UPDATE_TASKS_SUCCESS,
+    tasks: tasks
+  };
+}
+
+export const updateTasksFailure = (error) => {
+  return {
+    type: types.UPDATE_TASKS_FAILURE,
     error: error
   };
 }
