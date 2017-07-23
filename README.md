@@ -18,6 +18,9 @@
 # Setup async Redux
 
 1. configure store with react-thrunk
+2. create api caller
+3. create async action creators (doAsync, doSuccess, doFailure)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

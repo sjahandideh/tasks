@@ -1,14 +1,15 @@
-// TaskReducers.js
+import * as types from '../actions/action-types';
+import initialState from './initial-state';
 
 // state == array of tasks
-export default (state = [], action) => {
+export default (state = initialState.tasks, action) => {
   switch (action.type) {
-    case 'CREATE_TASK':
+    case types.CREATE_TASK:
       return [
         ...state,
         Object.assign({}, action.task)
       ];
-    case 'COMPLETE_TASK':
+    case types.COMPLETE_TASK:
       let tasks = [...state];
       tasks.forEach(task => {
         if (task.text == action.task) {
@@ -17,6 +18,10 @@ export default (state = [], action) => {
         }
       });
       return tasks;
+    case types.LOAD_TASKS_SUCCESS:
+      return action.tasks;
+    case types.LOAD_TASKS_FAILURE:
+      return action.error;
     default:
       return state;
   }

@@ -16,8 +16,10 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 import AppRoute from './routes/route-maker';
 import routes from './routes/routes';
+import {loadTasksAsync} from './actions/task-actions';
 
 const store = configureStore();
+store.dispatch(loadTasksAsync());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import * as TaskActions from '../../actions/TaskActions';
+import {connect} from 'react-redux';
+import * as TaskActions from '../../actions/task-actions';
 // style
 import '../../assets/styles/new-task.css';
 
@@ -13,14 +13,11 @@ class NewTask extends Component {
     let category = this.props.tag;
 
     if (e.keyCode == 13) {
-      let tags = [
-        category,
-        'in-progress'
-      ]
+      let tags = [category, 'in-progress'];
 
       this.props.createTask({
         text: e.target.value,
-        tags: tags
+        tags: tags,
       });
 
       e.target.value = '';
@@ -41,10 +38,10 @@ class NewTask extends Component {
 }
 
 // Map actions to props
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    createTask: task => dispatch(TaskActions.createTask(task))
-  }
+    createTask: task => dispatch(TaskActions.createTask(task)),
+  };
 };
 
 export default connect(null, mapDispatchToProps)(NewTask);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as TaskActions from '../../actions/TaskActions';
+import * as TaskActions from '../../actions/task-actions';
 // style
 import '../../assets/styles/task-list.css';
 // component
@@ -21,8 +21,11 @@ class TaskList extends Component {
     });
   }
 
-  // tasks is an Array of tasks
-  // filters is an Array of filters. e.g. ['completed', 'home']
+  /* tasks is an Array of tasks
+   * filters is an Array of filters. e.g. ['completed', 'home']
+   * Note:
+   *   completed and in-progress are saved as tags too!
+  */
   filterTasks(tasks, tags) {
     return tasks.filter(task => 
       this.match(task, tags)
