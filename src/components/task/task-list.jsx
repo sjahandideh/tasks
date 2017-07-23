@@ -15,26 +15,9 @@ class TaskList extends Component {
     this.props.completeTask(task);
   }
 
-  match(task, tags) {
-    return task.tags.every(task => {
-      return tags.includes(task);
-    });
-  }
-
-  /* tasks is an Array of tasks
-   * filters is an Array of filters. e.g. ['completed', 'home']
-   * Note:
-   *   completed and in-progress are saved as tags too!
-  */
-  filterTasks(tasks, tags) {
-    return tasks.filter(task => 
-      this.match(task, tags)
-    );
-  }
-
   render() {
     let tags = this.props.tags.split(',');
-    let tasks = this.filterTasks(this.props.tasks, tags);
+    let tasks = this.props.tasks;
 
     const items = tasks.map(item => {
       return (
@@ -56,18 +39,11 @@ class TaskList extends Component {
   }
 }
 
-// Maps state from store to props
-const mapStateToProps = (state, ownProps) => {
-  return {
-    tasks: state.tasks,
-  };
-};
-
 // Map actions to props
 const mapDispatchToProps = dispatch => {
   return {
-    completeTask: taskId => dispatch(TaskActions.completeTask(taskId)),
+    completeTask: taskId => dispatch(TaskActions.completeTask(taskId))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default connect(null, mapDispatchToProps)(TaskList);

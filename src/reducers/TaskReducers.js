@@ -22,6 +22,10 @@ export default (state = initialState.tasks, action) => {
       return action.tasks;
     case types.LOAD_TASKS_FAILURE:
       return action.error;
+    case types.UPDATE_TASKS_SUCCESS:
+      return state;
+    case types.UPDATE_TASKS_FAILURE:
+      return action.error;
     default:
       return state;
   }

@@ -11,7 +11,7 @@ const instance = axios.create({
 
 class TaskApi {  
   static getAll() {
-    return instance.get('/tasks').
+    return instance.get('/tasks.json').
       then(function(response) {
         let tasks = response.data.data.tasks;
         return tasks;
@@ -22,7 +22,7 @@ class TaskApi {
   }
 
   static updateAll(tasks) {
-    return instance.post('/tasks', {tasks: tasks}).
+    return instance.post('/tasks.json', tasks).
       then(function(response) {
         let tasks = response.data.data.tasks;
         return tasks;

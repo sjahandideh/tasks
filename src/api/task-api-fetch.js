@@ -12,10 +12,8 @@ class TaskApi {
     }
 
     return fetch('http://localhost:3001/tasks', headers).then(response => {
-      debugger;
       return response.json();
     }).catch(error => {
-      debugger;
       return error;
     });
   }
