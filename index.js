@@ -5,7 +5,9 @@ const express = require('express');
 const app = express();
 const port = 3001;
 var taskItems = [];
+var tagItems = ['test1', 'test2', 'test3'];
 
+/** Setup **/
 var bodyParser = require('body-parser');
 // configure app to use bodyParser()
 // this will let us get response data from a POST
@@ -24,15 +26,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', (request, response) => {
-  console.log('items: ', taskItems);
-  response.json({
-    data: {tasks: taskItems}
-  });
-});
+/** API **/
 
+/** TASK **/
 app.get('/tasks.json', (request, response) => {
-  console.log('loading items: ', taskItems);
+  console.log('loading tasks: ', taskItems);
   response.json({
     status: 200,
     data: {tasks: taskItems}
@@ -55,6 +53,15 @@ app.post('/tasks.json', (req, res) => {
   res.json({
     status: 200,
     data: {tasks: taskItems}
+  });
+});
+
+/** TAG **/
+app.get('/tags.json', (request, response) => {
+  console.log('loading tags: ', tagItems);
+  response.json({
+    status: 200,
+    data: {tags: tagItems}
   });
 });
 
