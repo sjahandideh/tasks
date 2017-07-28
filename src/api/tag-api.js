@@ -21,8 +21,9 @@ class TagApi {
       });
   }
 
-  static updateAll(tags) {
-    return instance.post('/tags.json', tags).
+  static create(tagText) {
+    let tag = { text: tagText };
+    return instance.post('/tags.json', tag).
       then(function(response) {
         let tags = response.data.data.tags;
         return tags;

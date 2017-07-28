@@ -44,32 +44,28 @@ export const loadTagsFailure = (error) => {
 
 /** update tags **/
 
-export const updateTagsAsync = (tags) => {
+export const createTagAsync = (tag) => {
   return function(dispatch) {
-    if (tags.length == 0) {
-      return dispatch(updateTagsSuccess(tags));
-    };
-
-    return TagApi.updateAll(tags)
+    return TagApi.create(tag)
       .then((tags) => {
-        dispatch(updateTagsSuccess(tags));
+        dispatch(createTagsSuccess(tags));
       })
       .catch((error) => {
-        dispatch(updateTagsFailure(error));
+        dispatch(createTagsFailure(error));
       })
   };
 };
 
-export const updateTagsSuccess = (tags) => {
+export const createTagsSuccess = (tags) => {
   return {
-    type: types.UPDATE_TAGS_SUCCESS,
+    type: types.CREATE_TAGS_SUCCESS,
     tags: tags
   };
 }
 
-export const updateTagsFailure = (error) => {
+export const createTagsFailure = (error) => {
   return {
-    type: types.UPDATE_TAGS_FAILURE,
+    type: types.CREATE_TAGS_FAILURE,
     error: error
   };
 }

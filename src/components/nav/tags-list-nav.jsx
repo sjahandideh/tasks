@@ -7,6 +7,15 @@ class TagsListNav extends Component {
     super(props);
   }
 
+  create(e) {
+    if (e.keyCode == 13) {
+      let tag = e.target.value;
+      this.props.createTagAsync(tag);
+      e.target.value = '';
+      window.location.assign(tag);
+    }
+  }
+
   render() {
     let active = this.props.active;
     let tags = this.props.tags;
@@ -18,6 +27,13 @@ class TagsListNav extends Component {
           {tags.map((tag) => (
             <a href={tag} className={(tag == active ? 'active' : '') + " list-group-item"}>{tag}</a>
           ))}
+          <div className="new-item">
+            <input
+              type="text"
+              placeholder="New list"
+              onKeyDown={e => this.create(e)}
+            />
+          </div>
         </div>
       </div>
     );
@@ -33,7 +49,9 @@ const mapStateToProps = (state, ownProps) => {
 
 // Map actions to props
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    createTagAsync: tag => dispatch(TagActions.createTagAsync(tag))
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagsListNav);
