@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const port = 3001;
 var taskItems = [];
-var tagItems = ['test1', 'test2', 'test3'];
+var tagItems = [];
 
 /** Setup **/
 var bodyParser = require('body-parser');
@@ -60,6 +60,21 @@ app.post('/tasks.json', (req, res) => {
 app.get('/tags.json', (request, response) => {
   console.log('loading tags: ', tagItems);
   response.json({
+    status: 200,
+    data: {tags: tagItems}
+  });
+});
+
+// creating a tag
+app.post('/tags.json', (req, res) => {
+  let tag = req.body;
+  console.log('creating a tag: ', tag);
+
+  tagItems.push({
+    text: tag
+  });
+
+  res.json({
     status: 200,
     data: {tags: tagItems}
   });
