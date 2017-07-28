@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as TaskActions from '../actions/task-actions';
 // style
 import logo from '../assets/img/logo.svg';
 import '../assets/styles/home.css';
 import 'bootstrap/dist/css/bootstrap.css';
 // components
+import TagsListNav from './nav/tags-list-nav';
 import TaskList from './task/task-list';
 import NewTask from './task/new-task';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    //    this.props.loadTasksAsync();
   }
 
   componentDidUpdate(nextProps, nextState) {
@@ -45,11 +42,11 @@ class Home extends Component {
     let completedTasks = this.filterTasks(this.props.tasks, ['completed', category]);
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>My TODOs</h2>
-        </div>
-        <p className="App-body">
+      <div className="App container">
+        <div className="App-body col-sm-offset-1 col-sm-7">
+          <div className="App-header">
+            <h2>My TODOs</h2>
+          </div>
           <NewTask tag={category} />
 
           <div className='list'>
@@ -61,7 +58,9 @@ class Home extends Component {
             <h4>Done!</h4>
             <TaskList tasks={completedTasks} tags={'completed,'+category}  />
           </div>
-        </p>
+        </div>
+
+        <TagsListNav active={category} />
       </div>
     );
   }
@@ -77,7 +76,6 @@ const mapStateToProps = (state, ownProps) => {
 // Map actions to props
 const mapDispatchToProps = dispatch => {
   return {
-    loadTasksAsync: () => dispatch(TaskActions.loadTasksAsync()),
     updateTasksAsync: tasks => dispatch(TaskActions.updateTasksAsync(tasks))
   };
 };
