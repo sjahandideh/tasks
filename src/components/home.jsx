@@ -70,7 +70,7 @@ class Home extends Component {
 // Maps state from store to props
 const mapStateToProps = (state, ownProps) => {
   return {
-    tasks: state.tasks,
+    tasks: state.tasks
   };
 };
 
