@@ -59,6 +59,10 @@ export const loadTasksFailure = (error) => {
 
 export const updateTasksAsync = (tasks) => {
   return function(dispatch) {
+    if (tasks.length == 0) {
+      return dispatch(updateTasksSuccess(tasks));
+    };
+
     return TaskApi.updateAll(tasks)
       .then((tasks) => {
         dispatch(updateTasksSuccess(tasks));
