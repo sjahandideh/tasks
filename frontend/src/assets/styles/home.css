@@ -1,0 +1,27 @@
+.App {
+  margin: 10px auto;
+  color: grey;
+  font-family: Monaco;
+}
+
+.App-header {
+  color: grey;
+  width: 170px;
+  margin: 50px auto;
+}
+
+.App-body {
+  margin-top: 20px;
+  border: 0px solid grey;
+}
+
+.App-body .list {
+  margin: 5px;
+  padding: 5px;
+}
+
+.App-body .list h4 {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+}
