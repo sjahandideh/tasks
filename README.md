@@ -21,6 +21,7 @@
 2. create api caller
 3. create async action creators (doAsync, doSuccess, doFailure)
 
+# Refs and Plugin docs
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

@@ -19,7 +19,7 @@ class Home extends Component {
     this.props.updateTasksAsync(nextProps.tasks);
   }
 
-  match(task, tags) {
+  _match(task, tags) {
     return task.tags.every(task => {
       return tags.includes(task);
     });
@@ -30,16 +30,16 @@ class Home extends Component {
    * Note:
    *   completed and in-progress are saved as tags too!
   */
-  filterTasks(tasks, tags) {
+  _filterTasks(tasks, tags) {
     return tasks.filter(task =>
-      this.match(task, tags)
+      this._match(task, tags)
     );
   }
 
   render() {
     let category = this.props.match.params.category;
-    let inProgressTasks = this.filterTasks(this.props.tasks, ['in-progress', category]);
-    let completedTasks = this.filterTasks(this.props.tasks, ['completed', category]);
+    let inProgressTasks = this._filterTasks(this.props.tasks, ['in-progress', category]);
+    let completedTasks = this._filterTasks(this.props.tasks, ['completed', category]);
 
     return (
       <div className="App container">
