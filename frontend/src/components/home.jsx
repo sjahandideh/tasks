@@ -15,7 +15,7 @@ class Home extends Component {
     super(props);
   }
 
-  componentDidUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps, nextState) {
     this.props.updateTasksAsync(nextProps.tasks);
   }
 
