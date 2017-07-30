@@ -22,6 +22,8 @@ class TaskApi {
   }
 
   static updateAll(tasks) {
+    if (!Array.isArray(tasks)) { return };
+
     return instance.post('/tasks.json', tasks).
       then(function(response) {
         let tasks = response.data.data.tasks;

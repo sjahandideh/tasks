@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as TagActions from '../../actions/tag-actions';
+// style
+import '../../assets/styles/new-tag.css';
 
 class TagsListNav extends Component {
   constructor(props) {
@@ -23,17 +25,15 @@ class TagsListNav extends Component {
     return (
       <div className="App-body col-sm-offset-1 col-sm-2">
         <div className="list-group">
-          <a href="/" className="list-group-item">Home</a>
+          <input
+            className="new-tag"
+            type="text"
+            placeholder="New list"
+            onKeyDown={e => this.create(e)}
+          />
           {tags.map((tag) => (
             <a href={tag} className={(tag == active ? 'active' : '') + " list-group-item"}>{tag}</a>
           ))}
-          <div className="new-item">
-            <input
-              type="text"
-              placeholder="New list"
-              onKeyDown={e => this.create(e)}
-            />
-          </div>
         </div>
       </div>
     );

@@ -28,6 +28,7 @@ class NewTask extends Component {
     return (
       <div className="new-item">
         <input
+          className="new-task"
           type="text"
           placeholder="New task"
           onKeyDown={e => this.create(e)}

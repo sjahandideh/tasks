@@ -1,0 +1,8 @@
+input.new-tag {
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+  padding: 10px;
+  background-color: #eee;
+  width: 100%;
+}
