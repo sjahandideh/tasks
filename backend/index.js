@@ -68,11 +68,7 @@ app.get('/tags.json', (request, response) => {
 // creating a tag
 app.post('/tags.json', (req, res) => {
   let tag = req.body;
-  console.log('creating a tag: ', tag);
-
-  tagItems.push({
-    text: tag
-  });
+  tagItems.push(tag.text);
 
   res.json({
     status: 200,
