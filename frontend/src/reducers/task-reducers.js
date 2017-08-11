@@ -21,11 +21,13 @@ export default (state = initialState.tasks, action) => {
     case types.LOAD_TASKS_SUCCESS:
       return action.tasks;
     case types.LOAD_TASKS_FAILURE:
-      return action.error;
+      console.log('Action Error: ', action.error.message);
+      return state;
     case types.UPDATE_TASKS_SUCCESS:
       return state;
     case types.UPDATE_TASKS_FAILURE:
-      return action.error;
+      console.log('Action Error: ', action.error.message);
+      return state;
     default:
       return state;
   }

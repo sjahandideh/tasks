@@ -7,12 +7,12 @@ export default (state = initialState.tags, action) => {
     case types.LOAD_TAGS_SUCCESS:
       return action.tags;
     case types.LOAD_TAGS_FAILURE:
-      console.log('Action Error: ', action.error);
+      console.log('Action Error: ', action.error.message);
       return state;
     case types.CREATE_TAGS_SUCCESS:
       return action.tags;
     case types.CREATE_TAGS_FAILURE:
-      console.log('Action Error: ', action.error);
+      console.log('Action Error: ', action.error.message);
       return state;
     default:
       return state;
