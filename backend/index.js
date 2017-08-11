@@ -1,30 +1,14 @@
 /** a simple todo-list app server using Express **/
 
 require('dotenv').config();
-const express = require('express');
-const app = express();
-const port = process.env.API_PORT;
+var bodyParser = require('body-parser');
+var express = require('express');
+var app = express();
+var port = process.env.API_PORT;
 var taskItems = [];
 var tagItems = [];
 
-/** Setup **/
-var bodyParser = require('body-parser');
-// configure app to use bodyParser()
-// this will let us get response data from a POST
-var json_body_parser = bodyParser.json();
-var urlencoded_body_parser = bodyParser.urlencoded({extended: true});
-app.use(json_body_parser);
-app.use(urlencoded_body_parser);
-app.use(function(req, res, next) {
-  req.header('Content-type', 'application/json');
-  res.header('Content-type', 'application/json');
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+app = _addHeaders(app, bodyParser);
 
 /** API **/
 
@@ -83,3 +67,27 @@ app.listen(port, err => {
 
   console.log(`server is listening on ${port}`);
 });
+
+/** Utility functions **/
+
+function _addHeaders(app, body_parser) {
+  // configure app to use bodyParser()
+  // this will let us get response data from a POST
+  var json_body_parser = body_parser.json();
+  var urlencoded_body_parser = body_parser.urlencoded({extended: true});
+  app.use(json_body_parser);
+  app.use(urlencoded_body_parser);
+  app.use(function(req, res, next) {
+    req.header('Content-type', 'application/json');
+    res.header('Content-type', 'application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+  });
+
+  return app;
+}
+
