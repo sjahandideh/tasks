@@ -1,8 +1,9 @@
 /** API fetcher using axios **/
 
 import axios from 'axios';
+require('dotenv').config();
 
-const API_ENDPOINT = 'http://localhost:3001';
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 const instance = axios.create({
   baseURL: API_ENDPOINT,
   timeout: 1000,
