@@ -1,9 +1,9 @@
-// a simple todo-list app server using Express
-const APP_ENDPOINT = 'http://localhost:3000';
+/** a simple todo-list app server using Express **/
 
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = process.env.API_PORT;
 var taskItems = [];
 var tagItems = [];
 
